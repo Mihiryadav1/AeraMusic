@@ -1,0 +1,59 @@
+ :root {
+     --primaryColor: #0B0D12;
+     --secondaryColor: #23252a;
+     --icons: #B1B4B5;
+     --mutedGreen: #6FAF86;
+
+ }
+
+ .primary {
+     background-color: var(--primaryColor)
+ }
+
+ .secondary {
+     background-color: var(--secondaryColor)
+ }
+
+ .iconColor {
+     color: var(--icons);
+ }
+
+ .mutedGreen {
+     color: var(--mutedGreen);
+ }
+
+ .mutedBackGreen {
+     background-color: var(--mutedGreen);
+ }
+
+ .contentBackdrop {
+     background: linear-gradient(90deg,
+             #0F0F10 5%,
+             #202020 68%,
+             #202020 83%,
+             #202020 99%);
+
+
+ }
+
+ .category-scroll {
+     scrollbar-width: thin;
+     scrollbar-color: #4b5563 transparent;
+ }
+
+ .category-scroll::-webkit-scrollbar {
+     height: 4px;
+ }
+
+ .category-scroll::-webkit-scrollbar-track {
+     background: transparent;
+ }
+
+ .category-scroll::-webkit-scrollbar-thumb {
+     background: #4b5563;
+     border-radius: 999px;
+ }
+
+ .category-scroll::-webkit-scrollbar-thumb:hover {
+     background: #6b7280;
+ }
