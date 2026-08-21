@@ -6,8 +6,6 @@ node_modules/
 .env.*
 !.env.example
 
-# Backend uploads
-backend/uploads/
 
 # VS Code
 .vscode/

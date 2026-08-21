@@ -17,7 +17,10 @@ const TrackList = () => {
   const getTracksByMood = async (mood) => {
     setIsLoading(true);
     try {
-      const url = mood === "All" ? "/api/tracks" : `/api/tracks?mood=${mood}`;
+      const url =
+        mood === "All"
+          ? `${import.meta.env.VITE_API_URL}/api/tracks`
+          : `${import.meta.env.VITE_API_URL}/api/tracks?mood=${mood}`;
       const response = await axios.get(url);
 
       // console.log(response.data.data);

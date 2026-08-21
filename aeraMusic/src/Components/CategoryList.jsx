@@ -29,8 +29,9 @@ const CategoryList = () => {
   const getAllMoods = async () => {
     setIsLoading(true);
     try {
-      // const API_URL = import.meta.env.VITE_API_URL;
-      const getAllMoods = await axios.get(`/api/moods`);
+      const getAllMoods = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/moods`,
+      );
       setMood(["All", ...getAllMoods.data.data]);
       // console.log(getAllMoods.data?.data);
     } catch (error) {

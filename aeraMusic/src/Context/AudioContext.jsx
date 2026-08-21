@@ -45,7 +45,8 @@ export const AudioProvider = ({ children }) => {
     initializeAudio();
 
     await audioContextRef.current.resume();
-    const newAudioUrl = `http://localhost:8000/api/stream/${track._id}`;
+
+    const newAudioUrl = `${import.meta.env.VITE_API_URL}/api/stream/${track._id}`;
     //if same song is clicked
     if (audioRef.current.src === newAudioUrl) {
       if (audioRef.current.paused) {
