@@ -83,7 +83,7 @@ const WeatherStats = () => {
             <img src="./sun.svg" alt="" width={70} />
           </div>
           <div className="statContent">
-            <p className="text-2xl">{weather.weather}</p>
+            <p className="text-2xl">{weather.weather} WMO</p>
             <p className="text-lg">Weather</p>
             <p className="text-sm mutedGreen font-semibold">
               {getWeatherText(weather.weather)}
