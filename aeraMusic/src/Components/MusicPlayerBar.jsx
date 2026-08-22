@@ -41,7 +41,7 @@ const MusicPlayerBar = () => {
                 }
               }}
             >
-              {isPlaying || formatTime(currentTime) === duration ? (
+              {isPlaying || currentTime == duration ? (
                 <FaCirclePause />
               ) : (
                 <FaCirclePlay />
@@ -64,7 +64,7 @@ const MusicPlayerBar = () => {
           </div>
           <div className="songProgress flex items-center justify-between gap-4">
             <span className="text-white font-semibold">
-              {formatTime(currentTime)}
+              {formatTime(duration)}
             </span>
 
             <div className="progressContainer min-w-68">
@@ -85,7 +85,7 @@ const MusicPlayerBar = () => {
             </div>
 
             <span className="text-white font-semibold">
-              {formatTime(duration)}
+              {formatTime(currentTime)}
             </span>
           </div>
         </div>
