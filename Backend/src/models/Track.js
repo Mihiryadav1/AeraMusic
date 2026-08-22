@@ -27,7 +27,15 @@ const trackSchema = new mongoose.Schema(
 
     mood: {
       type: String,
-      enum: ["Focus", "Study", "Coffee", "Productivity", "Energy", "Relax"],
+      enum: [
+        "Focus",
+        "Study",
+        "Coffee",
+        "Productivity",
+        "Energy",
+        "Relax",
+        "Work",
+      ],
     },
   },
   {
