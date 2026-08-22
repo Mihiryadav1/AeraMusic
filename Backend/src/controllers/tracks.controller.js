@@ -3,18 +3,22 @@ import mongoose from "mongoose";
 // Create Track
 export const createTrack = async (req, res) => {
   try {
-    const { title, artist, album, genre, mood, duration } = req.body;
+    const { title, artwork, genre, mood, duration } = req.body;
+
+    // Check audio file first
+    if (!req.files?.audioFile) {
+      return res.status(400).json({
+        success: false,
+        message: "Audio file is required",
+      });
+    }
 
     const track = await Track.create({
       title,
-      artist,
-      album,
       genre,
       mood,
       duration,
-      artwork: req.files?.artwork
-        ? `/uploads/artwork/${req.files.artwork[0].filename}`
-        : "",
+      artwork,
 
       audioFile: req.files?.audioFile
         ? `/uploads/music/${req.files.audioFile[0].filename}`
@@ -38,10 +42,10 @@ export const createTrack = async (req, res) => {
 // Get All Tracks
 export const getAllTracks = async (req, res) => {
   try {
-    const { mood } = req.query; 
+    const { mood } = req.query;
     const filter = mood ? { mood } : {};
 
-    const tracks = await Track.find( filter );
+    const tracks = await Track.find(filter);
 
     res.status(200).json({
       success: true,

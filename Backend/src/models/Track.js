@@ -16,11 +16,8 @@ const trackSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    image: {
-      type: String,
-      required: true,
-    },
-    genere: {
+
+    genre: {
       type: String,
     },
     artwork: {
