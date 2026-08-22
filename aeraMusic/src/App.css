@@ -3,6 +3,7 @@
   --secondaryColor: #23252a;
   --icons: #b1b4b5;
   --mutedGreen: #6faf86;
+  --mainGreen: #08df73;
 }
 
 .primary {
@@ -79,3 +80,30 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+ 
+.music-progress,.volume-progress {
+  width: 100%;
+  height: 4px;
+  appearance: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.music-progress::-webkit-slider-thumb,.volume-progress::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #08df73;
+  cursor: pointer;
+}
+
+.music-progress::-moz-range-thumb,.volume-progress::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: none;
+  border-radius: 50%;
+  background: #08df73;
+  cursor: pointer;
+} 

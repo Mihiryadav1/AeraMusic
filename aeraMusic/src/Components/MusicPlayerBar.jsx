@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { FaCirclePlay, FaCirclePause } from "react-icons/fa6";
-import { FaStepForward, FaStepBackward } from "react-icons/fa";
+import { FaStepForward, FaStepBackward, FaRegHeart } from "react-icons/fa";
 import AudioPlayerContext from "../Context/AudioContext";
 import { useContext } from "react";
 import WaveComponent from "./WaveComponent";
@@ -10,7 +10,8 @@ const MusicPlayerBar = () => {
   const currentTrack = useSelector((state) => state.player.currentTrack);
   const tracks = useSelector((state) => state.player.tracks);
 
-  const { playAudio, duration, currentTime } = useContext(AudioPlayerContext);
+  const { playAudio, duration, currentTime, seekAudio } =
+    useContext(AudioPlayerContext);
   const currentIndex = tracks.findIndex(
     (track) => track._id === currentTrack?._id,
   );
@@ -24,10 +25,39 @@ const MusicPlayerBar = () => {
     return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   };
   return (
-    <div className="secondary p-4 flex justify-between items-center">
-      <div className="bg-green-50">{currentTrack?.title}</div>
+    <div className="p-4 flex justify-between items-center secondary">
+      {/* Track Info Div */}
+      <div
+        style={{
+          // backgroundColor:"red",
+          borderRadius: "10px",
+          overflow: "hidden",
+        }}
+      >
+        <div className="flex items-center gap-4">
+          <img
+            src={currentTrack?.artwork}
+            alt=""
+            style={{
+              width: "65px",
+              height: "65px",
+              objectFit: "cover",
+              borderRadius: "10px",
+              overflow: "hidden",
+            }}
+          />
+          <div className="text-white font-semibold">
+            <p>{currentTrack?.title}</p>
+            <p className="text-sm mutedGreen">{currentTrack?.title}</p>
+          </div>
+          <div className="iconColor text-2xl">
+            <FaRegHeart />
+          </div>
+        </div>
+      </div>
+      {/* Musiccontroller Div */}
       <div className="musicController">
-        <div className="flex flex-col items-center gap-1 p-3">
+        <div className="flex flex-col items-center gap-3">
           <WaveComponent />
           <div className="flex items-center gap-7">
             <span className="text-2xl text-white">
@@ -66,22 +96,26 @@ const MusicPlayerBar = () => {
             <span className="text-white font-semibold">
               {formatTime(duration)}
             </span>
-
-            <div className="progressContainer min-w-68">
-              <div
-                className="flex w-full h-1.5 primary rounded-full overflow-hidden"
-                role="progressbar"
-                // aria-valuenow={progress}
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <div
-                  className="flex flex-col justify-center rounded-full overflow-hidden mutedBackGreen text-xs text-primary-foreground text-center whitespace-nowrap transition duration-100"
-                  style={{
-                    width: `${duration ? (currentTime / duration) * 100 : 0}%`,
-                  }}
-                />
-              </div>
+            <div className="progressContainer min-w-96">
+              <input
+                type="range"
+                min={0}
+                max={duration || 0}
+                value={currentTime || 0}
+                onChange={(e) => {
+                  seekAudio(Number(e.target.value));
+                }}
+                className="music-progress"
+                style={{
+                  background: `linear-gradient(
+        to right,
+        #08df73 0%,
+        #08df73 ${duration ? (currentTime / duration) * 100 : 0}%,
+        #e5e7eb ${duration ? (currentTime / duration) * 100 : 0}%,
+        #e5e7eb 100%
+      )`,
+                }}
+              />
             </div>
 
             <span className="text-white font-semibold">
@@ -90,7 +124,16 @@ const MusicPlayerBar = () => {
           </div>
         </div>
       </div>
-      <div className="volumeControl"></div>
+      {/* Volume Div */}
+      <div className="volumeControl  flex ">
+        <input
+          type="range"
+          min={0}
+          max="100"
+          value="40"
+          className="volume-progress"
+        />
+      </div>
     </div>
   );
 };

@@ -74,6 +74,12 @@ export const AudioProvider = ({ children }) => {
     // console.log("Playing ID:", id);
     // console.log("Playing URL:", audioRef.current.src);
   };
+  // Get part of track on drag on progressbar
+  const seekAudio = (time) => {
+    audioRef.current.currentTime = time;
+    setCurrentTime(time);
+  };
+
   useEffect(() => {
     const audio = audioRef.current;
 
@@ -103,6 +109,7 @@ export const AudioProvider = ({ children }) => {
         playAudio,
         currentTime,
         duration,
+        seekAudio,
       }}
     >
       {children}
