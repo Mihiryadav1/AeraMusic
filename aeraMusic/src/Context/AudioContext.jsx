@@ -90,12 +90,19 @@ export const AudioProvider = ({ children }) => {
     const handleLoadedMetadata = () => {
       setDuration(audio.duration);
     };
+    //Song Ended
+    const handleEnded = () => {
+      dispatch(setPlaying(false));
+      setCurrentTime(0);
+    };
     audio.addEventListener("timeupdate", handleTimeUpdate);
     audio.addEventListener("loadedmetadata", handleLoadedMetadata);
+    audio.addEventListener("ended", handleEnded);
 
     return () => {
       audio.removeEventListener("timeupdate", handleTimeUpdate);
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      audio.removeEventListener("ended", handleEnded);
     };
   }, []);
 

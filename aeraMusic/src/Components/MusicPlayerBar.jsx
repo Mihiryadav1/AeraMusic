@@ -48,7 +48,7 @@ const MusicPlayerBar = () => {
           />
           <div className="text-white font-semibold">
             <p>{currentTrack?.title}</p>
-            <p className="text-sm mutedGreen">{currentTrack?.title}</p>
+            <p className="text-sm mutedGreen">{currentTrack?.genre}</p>
           </div>
           <div className="iconColor text-2xl">
             <FaRegHeart />
@@ -71,11 +71,7 @@ const MusicPlayerBar = () => {
                 }
               }}
             >
-              {isPlaying || currentTime == duration ? (
-                <FaCirclePause />
-              ) : (
-                <FaCirclePlay />
-              )}
+              {isPlaying ? <FaCirclePause /> : <FaCirclePlay />}
             </button>
             <button
               className="text-2xl text-white"
