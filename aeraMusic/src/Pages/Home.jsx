@@ -9,12 +9,12 @@ const Home = () => {
       <CategoryList />
       <TrackList />
 
-      <div className="flex flex-1 items-center">
+      <div className="flex my-4 mx-3 items-center">
         <WeatherStats />
       </div>
-      <div className="flex flex-1">
+      {/* <div className="flex flex-1">
         <WaveComponent />
-      </div>
+      </div> */}
     </div>
   );
 };

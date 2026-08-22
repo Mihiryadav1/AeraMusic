@@ -5,6 +5,7 @@ const initialState = {
   isPlaying: false,
   isFavourite: false,
   isDataLoading: false,
+  tracks: [],
 };
 
 const playerSlice = createSlice({
@@ -30,10 +31,22 @@ const playerSlice = createSlice({
     setPlaying: (state, action) => {
       state.isPlaying = action.payload;
     },
+    setTracks: (state, action) => {
+      state.tracks = action.payload;
+    },
+    setCurrentTrack: (state, action) => {
+      state.currentTrack = action.payload;
+    },
   },
 });
 
-export const { playTrack, pauseTrack, markFavourite, setPlaying } =
-  playerSlice.actions;
+export const {
+  playTrack,
+  pauseTrack,
+  markFavourite,
+  setPlaying,
+  setTracks,
+  setCurrentTrack,
+} = playerSlice.actions;
 
 export default playerSlice.reducer;

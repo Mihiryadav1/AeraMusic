@@ -1,4 +1,4 @@
-import { createContext, useRef } from "react";
+import { createContext, useRef, useEffect, useState } from "react";
 import { setPlaying, playTrack } from "../Features/playerSlice";
 import { useDispatch } from "react-redux";
 
@@ -6,6 +6,10 @@ import { useDispatch } from "react-redux";
 const AudioPlayerContext = createContext();
 
 export const AudioProvider = ({ children }) => {
+  //Progress bar timer
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+
   const dispatch = useDispatch();
   //reference to webaudio api audio context
   const audioContextRef = useRef(null);
@@ -20,6 +24,7 @@ export const AudioProvider = ({ children }) => {
   //Visual Analyzer Reference
   const analyserRef = useRef(null);
 
+  //iniitlaize audio file
   const initializeAudio = () => {
     if (!audioContextRef.current) {
       //Web audio API Context creation
@@ -69,6 +74,24 @@ export const AudioProvider = ({ children }) => {
     // console.log("Playing ID:", id);
     // console.log("Playing URL:", audioRef.current.src);
   };
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    console.log(audio, "hey audio");
+    const handleTimeUpdate = () => {
+      setCurrentTime(audio.currentTime);
+    };
+    const handleLoadedMetadata = () => {
+      setDuration(audio.duration);
+    };
+    audio.addEventListener("timeupdate", handleTimeUpdate);
+    audio.addEventListener("loadedmetadata", handleLoadedMetadata);
+
+    return () => {
+      audio.removeEventListener("timeupdate", handleTimeUpdate);
+      audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
+    };
+  }, []);
 
   return (
     <AudioPlayerContext.Provider
@@ -78,6 +101,8 @@ export const AudioProvider = ({ children }) => {
         audioContextRef,
         analyserRef,
         playAudio,
+        currentTime,
+        duration,
       }}
     >
       {children}

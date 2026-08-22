@@ -1,7 +1,21 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import axios from "axios";
 const WeatherStats = () => {
-  const fetchCurrentWeather = () => {};
+  const fetchCurrentWeather = async () => {
+    try {
+      const weatherData = await axios.get(
+        `https://api.open-meteo.com/v1/forecast?latitude=18.5196&longitude=73.8554&hourly=temperature_2m`,
+      );
+      console.log(weatherData.data, "weatherData");
+    } catch (error) {
+      console.log("Error fetching data", error);
+    } finally {
+      console.log("");
+    }
+  };
+  useEffect(() => {
+    fetchCurrentWeather();
+  }, []);
   return (
     <div className="w-full text-white">
       <div className="mb-4">
@@ -11,7 +25,7 @@ const WeatherStats = () => {
         <p>Real-time insights to help you stay in flow</p>
       </div>
       <div className="statsContainer flex w-[60%] py-2 gap-4">
-        <div className="flex-1 secondary flex gap-3 secondary p-2 rounded">
+        <div className="flex-1 secondary flex gap-3 secondary px-4 py-6  rounded">
           <div className="">
             <img src="./sun.svg" alt="" width={70} />
           </div>
@@ -21,7 +35,7 @@ const WeatherStats = () => {
             <p className="text-sm mutedGreen font-semibold">Status</p>
           </div>
         </div>
-        <div className="flex-1 secondary flex gap-3 secondary p-2 rounded">
+        <div className="flex-1 secondary flex gap-3 secondary px-4 py-6 rounded">
           <div className="">
             <img src="./temperature.svg" alt="" width={70} />
           </div>
@@ -31,7 +45,7 @@ const WeatherStats = () => {
             <p className="text-sm mutedGreen font-semibold">Status</p>
           </div>
         </div>
-        <div className="flex-1 secondary flex gap-3 secondary p-2 rounded">
+        <div className="flex-1 secondary flex gap-3 secondary px-4 py-6 rounded">
           <div className="">
             <img src="./wind.svg" alt="" width={70} />
           </div>
@@ -41,7 +55,7 @@ const WeatherStats = () => {
             <p className="text-sm mutedGreen font-semibold">Status</p>
           </div>
         </div>
-        <div className="flex-1 secondary flex gap-3 secondary p-2 rounded">
+        <div className="flex-1 secondary flex gap-3 secondary px-4 py-6 rounded">
           <div className="">
             <img src="./humidity.svg" alt="" width={70} />
           </div>

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { IoPlayCircleOutline, IoPauseCircleOutline } from "react-icons/io5";
-import { playTrack } from "../Features/playerSlice";
+import { setCurrentTrack, setTracks } from "../Features/playerSlice";
 import AudioPlayerContext from "../Context/AudioContext";
 const TrackList = () => {
   const { playAudio } = useContext(AudioPlayerContext);
@@ -13,7 +13,7 @@ const TrackList = () => {
   const selectedMood = useSelector((state) => state.music.selectedMood);
   const isPlaying = useSelector((state) => state.player.isPlaying);
   const currentTrack = useSelector((state) => state.player.currentTrack);
-  console.log(currentTrack, "CURRENT");
+  // console.log(currentTrack, "CURRENT");
   const getTracksByMood = async (mood) => {
     setIsLoading(true);
     try {
@@ -25,6 +25,8 @@ const TrackList = () => {
 
       // console.log(response.data.data);
       setsongList(response.data.data);
+      dispatch(setTracks(response.data.data));
+      dispatch(setCurrentTrack(response.data.data[0]));
     } catch (error) {
       console.error("Failed to fetch tracks:", error);
     } finally {
