@@ -3,10 +3,17 @@ import axios from "axios";
 const WeatherStats = () => {
   const fetchCurrentWeather = async () => {
     try {
-      const weatherData = await axios.get(
-        `https://api.open-meteo.com/v1/forecast?latitude=18.5196&longitude=73.8554&hourly=temperature_2m`,
-      );
-      console.log(weatherData.data, "weatherData");
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        let lat = position.coords.latitude;
+        let long = position.coords.longitude;
+        const weatherData = await axios.get(
+          `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m`,
+        );
+        console.log(weatherData.data, "weatherData");
+
+        latText.innerText = lat.toFixed(2);
+        longText.innerText = long.toFixed(2);
+      });
     } catch (error) {
       console.log("Error fetching data", error);
     } finally {

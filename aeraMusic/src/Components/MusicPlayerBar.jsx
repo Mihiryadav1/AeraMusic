@@ -33,7 +33,7 @@ const MusicPlayerBar = () => {
           overflow: "hidden",
         }}
       >
-        <div className="flex items-center primary p-2">
+        <div className="flex items-center primary p-3">
           <div className="flex items-center gap-3 flex-1">
             <img
               src={currentTrack?.artwork}
