@@ -9,6 +9,7 @@ export const AudioProvider = ({ children }) => {
   //Progress bar timer
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [volume, setVolume] = useState(50);
 
   const dispatch = useDispatch();
   //reference to webaudio api audio context
@@ -80,6 +81,13 @@ export const AudioProvider = ({ children }) => {
     setCurrentTime(time);
   };
 
+  //Voume Control
+  const changeVolume = (value) => {
+    const newVolume = Number(value);
+    setVolume(newVolume);
+    audioRef.current.volume = newVolume / 100;
+  };
+
   useEffect(() => {
     const audio = audioRef.current;
 
@@ -116,6 +124,8 @@ export const AudioProvider = ({ children }) => {
         playAudio,
         currentTime,
         duration,
+        volume,
+        changeVolume,
         seekAudio,
       }}
     >

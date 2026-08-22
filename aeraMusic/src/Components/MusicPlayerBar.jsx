@@ -5,12 +5,11 @@ import AudioPlayerContext from "../Context/AudioContext";
 import { useContext } from "react";
 import WaveComponent from "./WaveComponent";
 const MusicPlayerBar = () => {
-  // const selectedMood = useSelector((state) => state.music.selectedMood);
   const isPlaying = useSelector((state) => state.player.isPlaying);
   const currentTrack = useSelector((state) => state.player.currentTrack);
   const tracks = useSelector((state) => state.player.tracks);
 
-  const { playAudio, duration, currentTime, seekAudio } =
+  const { playAudio, duration, currentTime, seekAudio, changeVolume, volume } =
     useContext(AudioPlayerContext);
   const currentIndex = tracks.findIndex(
     (track) => track._id === currentTrack?._id,
@@ -28,27 +27,29 @@ const MusicPlayerBar = () => {
     <div className="p-4 flex justify-between items-center secondary">
       {/* Track Info Div */}
       <div
+        className="min-w-65"
         style={{
-          // backgroundColor:"red",
           borderRadius: "10px",
           overflow: "hidden",
         }}
       >
-        <div className="flex items-center gap-4">
-          <img
-            src={currentTrack?.artwork}
-            alt=""
-            style={{
-              width: "65px",
-              height: "65px",
-              objectFit: "cover",
-              borderRadius: "10px",
-              overflow: "hidden",
-            }}
-          />
-          <div className="text-white font-semibold">
-            <p>{currentTrack?.title}</p>
-            <p className="text-sm mutedGreen">{currentTrack?.genre}</p>
+        <div className="flex items-center primary p-2">
+          <div className="flex items-center gap-3 flex-1">
+            <img
+              src={currentTrack?.artwork}
+              alt=""
+              style={{
+                width: "65px",
+                height: "65px",
+                objectFit: "cover",
+                borderRadius: "10px",
+                overflow: "hidden",
+              }}
+            />
+            <div className="text-white font-semibold">
+              <p className="text-wrap">{currentTrack?.title}</p>
+              <p className="text-sm mutedGreen">{currentTrack?.genre}</p>
+            </div>
           </div>
           <div className="iconColor text-2xl">
             <FaRegHeart />
@@ -121,14 +122,29 @@ const MusicPlayerBar = () => {
         </div>
       </div>
       {/* Volume Div */}
-      <div className="volumeControl  flex ">
+      <div className="volumeControl flex items-center gap-3">
         <input
           type="range"
           min={0}
           max="100"
-          value="40"
+          value={volume}
           className="volume-progress"
+          style={{
+            background: `linear-gradient(
+    to right,
+    #08df73 0%,
+    #08df73 ${volume}%,
+    #e5e7eb ${volume}%,
+    #e5e7eb 100%
+  )`,
+          }}
+          onChange={(e) => {
+            changeVolume(e.target.value);
+          }}
         />
+        <span className="font-semibold text-white min-w-5 p-2 text-center">
+          {volume}
+        </span>
       </div>
     </div>
   );
