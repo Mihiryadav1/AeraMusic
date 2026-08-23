@@ -28,7 +28,7 @@ const MusicPlayerBar = () => {
     <div className="w-full p-4 grid grid-col-1 md:grid-cols-[auto_minmax(0,1fr)_auto] gap-8 secondary">
       {/* Track Info Div */}
       <div className="flex items-center rounded-2xl overflow-hidden">
-        <div className="flex items-center primary p-3 overflow-hidden rounded-2xl">
+        <div className="flex items-center primary p-2.5 overflow-hidden rounded-2xl">
           <div className="flex items-center gap-3 flex-1">
             <img
               src={currentTrack?.artwork}

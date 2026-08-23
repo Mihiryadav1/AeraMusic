@@ -70,6 +70,8 @@ const TrackList = () => {
                 backgroundPosition: "center",
                 backgroundRepeat:"no-repeat",
                 
+              }} onClick={()=>{
+                dispatch(setCurrentTrack(item))
               }}
             >
               <div className="w-full p-3 flex items-center gap-2 contentBackdrop min-h-1/3">
