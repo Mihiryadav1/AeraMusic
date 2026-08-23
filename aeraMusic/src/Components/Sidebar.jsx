@@ -22,7 +22,7 @@ const Sidebar = () => {
         {/* Sidebar Link */}
         <li
           onClick={() => setActive("Home")}
-          className={`mb-5 flex items-center gap-4 rounded-lg px-2 py-2 cursor-pointer transition-colors
+          className={`mb-5 flex items-center gap-4 rounded-lg px-2 py-2 cursor-pointer transition-colors outline-0
             ${active === "Home" ? "bg-[#6FAF86]" : "hover:bg-[#6FAF86]/30"}
           `}
         >
@@ -60,7 +60,7 @@ const Sidebar = () => {
           </Link>
         </li> */}
         <li  onClick={() => setActive("Upload")}
-          className={`mb-5 flex items-center gap-4 rounded-lg px-2 py-2 cursor-pointer transition-colors
+          className={`mb-5 flex items-center gap-4 rounded-lg px-2 py-2 cursor-pointer transition-colors outline-0
             ${active === "Upload" ? "bg-[#6FAF86]" : "hover:bg-[#6FAF86]/30"}
           `}
         >
