@@ -63,7 +63,7 @@ const TrackList = () => {
         {songList.map((item) => (
           <SwiperSlide key={item._id}>
             <div
-              className={`h-50 md:h-78 rounded-xl overflow-hidden flex items-end ${currentTrack._id===item._id?"border borderMutedGreen hightlight":"border-0"}`}
+              className={`h-50 md:h-78 rounded-xl overflow-hidden flex items-end ${currentTrack._id===item._id?"border borderMutedGreen":"border-0"}`}
               style={{
                 backgroundImage: `url(${item.artwork})`,
                 backgroundSize: "cover",
