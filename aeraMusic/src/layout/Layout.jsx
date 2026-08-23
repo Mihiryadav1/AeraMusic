@@ -16,9 +16,9 @@ const Layout = () => {
         <Outlet />
       </main>
 
-      <div className="col-span-1 sm:col-span-2">
-        <MusicPlayerBar />
-      </div>
+        {/* <div className="col-span-1 sm:col-span-2">
+          <MusicPlayerBar />
+        </div> */}
 
     </div>
   );

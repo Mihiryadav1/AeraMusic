@@ -41,28 +41,10 @@
   scrollbar-color: var(--primaryColor) transparent;
 }
 
-.category-scroll::-webkit-scrollbar {
-  height: 4px;
-}
-
-.category-scroll::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 10px;
-}
-
-.category-scroll::-webkit-scrollbar-thumb {
-  background: var(--secondaryColor);
-  border-radius: 999px;
-}
-
-.category-scroll::-webkit-scrollbar-thumb:hover {
-  background: var(--secondaryColor);
-}
-
 /* width */
 ::-webkit-scrollbar {
   border-radius: 10px;
-  width: 4px;
+  width: 2px;
 }
 
 /* Track */
@@ -70,19 +52,14 @@
   background: var(--secondaryColor);
 }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: var(--mutedGreen);
-  border-radius: 10px;
-}
-
+ 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
 
- 
-.music-progress,.volume-progress {
+.music-progress,
+.volume-progress {
   width: 100%;
   height: 4px;
   appearance: none;
@@ -90,7 +67,8 @@
   cursor: pointer;
 }
 
-.music-progress::-webkit-slider-thumb,.volume-progress::-webkit-slider-thumb {
+.music-progress::-webkit-slider-thumb,
+.volume-progress::-webkit-slider-thumb {
   appearance: none;
   width: 14px;
   height: 14px;
@@ -99,11 +77,37 @@
   cursor: pointer;
 }
 
-.music-progress::-moz-range-thumb,.volume-progress::-moz-range-thumb {
+.music-progress::-moz-range-thumb,
+.volume-progress::-moz-range-thumb {
   width: 14px;
   height: 14px;
   border: none;
   border-radius: 50%;
   background: #08df73;
   cursor: pointer;
-} 
+}
+
+/* Swiper */
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  /* background: #444; */
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

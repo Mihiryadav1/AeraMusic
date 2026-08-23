@@ -24,7 +24,8 @@ const MusicPlayerBar = () => {
     return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   };
   return (
-    <div className="p-4 flex justify-between items-center secondary">
+    // <div className="p-4 flex justify-between items-center secondary  lg:flex-row md:flex-col sm:flex-col">
+    <div className="w-full p-4 flex flex-col lg:flex-row justify-between items-center secondary">
       {/* Track Info Div */}
       <div
         className="min-w-65"

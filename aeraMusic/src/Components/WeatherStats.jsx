@@ -63,9 +63,9 @@ const WeatherStats = () => {
         </p>
         <p>Real-time insights to help you stay in flow</p>
       </div>
-      <div className="statsContainer flex w-[60%] py-2 gap-4">
-        <div className="flex-1 secondary flex gap-3 secondary px-4 py-6  rounded">
-          <div className="">
+      <div className="statsContainer grid lg:grid-cols-4 w-full py-2 gap-4 flex-wrap">
+        <div className="w-full secondary flex gap-3 secondary px-4 py-6  rounded">
+          <div className="wrapper">
             <img src="./temperature.svg" alt="" width={70} />
           </div>
           <div className="statContent">
@@ -78,7 +78,7 @@ const WeatherStats = () => {
             </p>
           </div>
         </div>
-        <div className="flex-1 secondary flex gap-3 secondary px-4 py-6 rounded">
+        <div className=" w-full secondary flex gap-3 secondary px-4 py-6 rounded">
           <div className="">
             <img src="./sun.svg" alt="" width={70} />
           </div>
@@ -90,7 +90,7 @@ const WeatherStats = () => {
             </p>
           </div>
         </div>
-        <div className="flex-1 secondary flex gap-3 secondary px-4 py-6 rounded">
+        <div className="w-full  secondary flex gap-3 secondary px-4 py-6 rounded">
           <div className="">
             <img src="./wind.svg" alt="" width={70} />
           </div>
@@ -110,7 +110,7 @@ const WeatherStats = () => {
             </p>
           </div>
         </div>
-        <div className="flex-1 secondary flex gap-3 secondary px-4 py-6 rounded">
+        <div className="w-full secondary flex gap-3 secondary px-4 py-6 rounded">
           <div className="">
             <img src="./humidity.svg" alt="" width={70} />
           </div>
