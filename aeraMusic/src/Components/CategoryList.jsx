@@ -47,8 +47,8 @@ const CategoryList = () => {
     console.log("selectedMood", currentSelectedMood);
   }, [currentSelectedMood]);
   return (
-    <div className="inline-block p-3 w-full">
-      <p className="text-white text-2xl font-extrabold inline-block mb-4">
+    <div className="inline-block p-3 max-w-3/4">
+      <p className="text-white text-2xl font-extrabold inline-block mb-4 ">
         Select Category
       </p>
       <div className="flex justify-between items-center overflow-x-auto gap-3">

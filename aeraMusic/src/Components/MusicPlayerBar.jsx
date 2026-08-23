@@ -28,7 +28,7 @@ const MusicPlayerBar = () => {
     <div className="w-full p-4 flex flex-col lg:flex-row justify-between items-center secondary">
       {/* Track Info Div */}
       <div
-        className="min-w-65"
+        className="bg-green-400"
         style={{
           borderRadius: "10px",
           overflow: "hidden",
@@ -58,7 +58,7 @@ const MusicPlayerBar = () => {
         </div>
       </div>
       {/* Musiccontroller Div */}
-      <div className="musicController">
+      <div className="musicController w-2/4">
         <div className="flex flex-col items-center gap-3">
           <WaveComponent />
           <div className="flex items-center gap-7">
