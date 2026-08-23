@@ -36,11 +36,6 @@ const TrackList = () => {
     }
   };
 
-  // const streamTrack = (id) => {
-  //   const audio = new Audio(`http://localhost:8000/api/stream/${id}`);
-  //   audio.play();
-  // };
-
   useEffect(() => {
     getTracksByMood(selectedMood);
   }, [selectedMood]);
@@ -68,7 +63,7 @@ const TrackList = () => {
         {songList.map((item) => (
           <SwiperSlide key={item._id}>
             <div
-              className={`h-50 md:h-78 rounded-xl overflow-hidden flex items-end ${currentTrack._id===item._id?"border borderMutedGreen hightlight":""}`}
+              className={`h-50 md:h-78 rounded-xl overflow-hidden flex items-end ${currentTrack._id===item._id?"border borderMutedGreen hightlight":"border-0"}`}
               style={{
                 backgroundImage: `url(${item.artwork})`,
                 backgroundSize: "cover",
