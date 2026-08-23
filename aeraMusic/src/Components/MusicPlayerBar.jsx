@@ -25,7 +25,7 @@ const MusicPlayerBar = () => {
   };
   return (
     // <div className="p-4 flex justify-between items-center secondary  lg:flex-row md:flex-col sm:flex-col">
-    <div className="w-full p-4 flex flex-col lg:flex-row justify-between items-center secondary">
+  <div className="w-full p-4 grid grid-cols-[auto_minmax(0,1fr)_auto] gap-8 secondary">
       {/* Track Info Div */}
       <div
         className="bg-green-400"
@@ -58,7 +58,7 @@ const MusicPlayerBar = () => {
         </div>
       </div>
       {/* Musiccontroller Div */}
-      <div className="musicController w-2/4">
+      <div className="musicController min-w-0">
         <div className="flex flex-col items-center gap-3">
           <WaveComponent />
           <div className="flex items-center gap-7">
