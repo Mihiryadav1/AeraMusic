@@ -24,7 +24,6 @@ const CategoryList = () => {
   };
 
   const currentSelectedMood = useSelector((state) => state.music.selectedMood);
-  // console.log(currentSelectedMood,"From Store")
 
   const getAllMoods = async () => {
     setIsLoading(true);
@@ -75,7 +74,7 @@ const CategoryList = () => {
               >
                 <div
                   className={`moodCard w-18 h-18 secondary rounded-2xl flex items-center justify-center text-3xl ${
-                    currentSelectedMood === mood ? "mutedGreen" : "iconColor"
+                    currentSelectedMood === mood ? "mutedGreen border-[mutedGreen] border" : "iconColor"
                   }`}
                 >
                   {moodIcons[mood]}

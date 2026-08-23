@@ -49,56 +49,7 @@ const TrackList = () => {
       <p className="text-white text-2xl font-extrabold inline-block mb-4">
         Popular Tracks
       </p>
-      {/* <div className="flex gap-5 overflow-x-auto">
-        {isLoading ? (
-          songList.map((item) => {
-            return (
-              <div
-                key={item._id}
-                className="secondary min-w-64 max-w-76 h-78 rounded-xl shrink-0 animate-pulse"
-              ></div>
-            );
-          })
-        ) : (
-          <>
-            {songList.map((item) => {
-              return (
-                <div
-                  key={item._id}
-                  className="min-w-64 max-w-76 rounded-xl h-78 shrink-0 flex items-end overflow-hidden"
-                  style={{
-                    backgroundImage: `url(${item.artwork})`,
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
-                  }}
-                >
-                  <div className="contentBackdrop bg-slate-300 w-full p-3 flex items-center gap-2">
-                    <button
-                      className="text-4xl text-white"
-                      onClick={() => {
-                        playAudio(item);
-                      }}
-                    >
-                      {isPlaying && currentTrack?._id === item._id ? (
-                        <IoPauseCircleOutline />
-                      ) : (
-                        <IoPlayCircleOutline />
-                      )}
-                    </button>
-                    <div className="flex flex-col">
-                      <p className="text-white text-lg">{item.title}</p>
-                      <p className="text-white text-sm mutedGreen font-semibold capitalize">
-                        {item.genere}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </>
-        )}
-      </div> */}
+       
       <Swiper
         spaceBetween={20}
         slidesPerView={2}
@@ -112,17 +63,18 @@ const TrackList = () => {
           1280: {
             slidesPerView: 10,
           },
-        }}
+        }} 
       >
         {songList.map((item) => (
           <SwiperSlide key={item._id}>
             <div
-              className="h-50 md:h-78 rounded-xl overflow-hidden flex items-end"
+              className={`h-50 md:h-78 rounded-xl overflow-hidden flex items-end ${currentTrack._id===item._id?"border borderMutedGreen hightlight":""}`}
               style={{
                 backgroundImage: `url(${item.artwork})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                backgroundRepeat:"no-repeat"
+                backgroundRepeat:"no-repeat",
+                
               }}
             >
               <div className="w-full p-3 flex items-center gap-2 contentBackdrop min-h-1/3">
