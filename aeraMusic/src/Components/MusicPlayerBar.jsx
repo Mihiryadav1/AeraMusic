@@ -25,7 +25,7 @@ const MusicPlayerBar = () => {
   };
   return (
     // <div className="p-4 flex justify-between items-center secondary  lg:flex-row md:flex-col sm:flex-col">
-    <div className="w-full p-4 grid grid-cols-[auto_minmax(0,1fr)_auto] gap-8 secondary">
+    <div className="w-full p-4 grid grid-col-1 md:grid-cols-[auto_minmax(0,1fr)_auto] gap-8 secondary">
       {/* Track Info Div */}
       <div className="flex items-center rounded-2xl overflow-hidden">
         <div className="flex items-center primary p-3 overflow-hidden rounded-2xl">

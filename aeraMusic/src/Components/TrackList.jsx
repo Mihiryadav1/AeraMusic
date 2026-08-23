@@ -110,7 +110,7 @@ const TrackList = () => {
             slidesPerView: 4,
           },
           1280: {
-            slidesPerView: 5,
+            slidesPerView: 10,
           },
         }}
       >
@@ -125,7 +125,7 @@ const TrackList = () => {
                 backgroundRepeat:"no-repeat"
               }}
             >
-              <div className="w-full p-3 flex items-center gap-2 contentBackdrop">
+              <div className="w-full p-3 flex items-center gap-2 contentBackdrop min-h-1/3">
                 <button
                   className="text-4xl text-white"
                   onClick={() => playAudio(item)}
@@ -137,10 +137,10 @@ const TrackList = () => {
                   )}
                 </button>
 
-                <div>
-                  <p className="text-white text-lg">{item.title}</p>
+                <div className="flex flex-col items-start">
+                  <p className="text-white text-lg text-left mb-1">{item.title}</p>
                   <p className="text-sm mutedGreen font-semibold capitalize">
-                    {item.genere}
+                    {item.genre}
                   </p>
                 </div>
               </div>
