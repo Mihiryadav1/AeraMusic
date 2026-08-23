@@ -25,16 +25,10 @@ const MusicPlayerBar = () => {
   };
   return (
     // <div className="p-4 flex justify-between items-center secondary  lg:flex-row md:flex-col sm:flex-col">
-  <div className="w-full p-4 grid grid-cols-[auto_minmax(0,1fr)_auto] gap-8 secondary">
+    <div className="w-full p-4 grid grid-cols-[auto_minmax(0,1fr)_auto] gap-8 secondary">
       {/* Track Info Div */}
-      <div
-        className="bg-green-400"
-        style={{
-          borderRadius: "10px",
-          overflow: "hidden",
-        }}
-      >
-        <div className="flex items-center primary p-3">
+      <div className="flex items-center rounded-2xl overflow-hidden">
+        <div className="flex items-center primary p-3 overflow-hidden rounded-2xl">
           <div className="flex items-center gap-3 flex-1">
             <img
               src={currentTrack?.artwork}
@@ -52,7 +46,7 @@ const MusicPlayerBar = () => {
               <p className="text-sm mutedGreen">{currentTrack?.genre}</p>
             </div>
           </div>
-          <div className="iconColor text-2xl">
+          <div className="iconColor text-2xl mx-4">
             <FaRegHeart />
           </div>
         </div>
