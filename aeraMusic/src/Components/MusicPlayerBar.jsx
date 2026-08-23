@@ -56,7 +56,7 @@ const MusicPlayerBar = () => {
         <div className="flex flex-col items-center gap-3">
           <WaveComponent />
           <div className="flex items-center gap-7">
-            <span className="text-2xl text-white">
+            <span className="text-2xl text-white outline-0">
               <FaStepBackward />
             </span>
             <button
@@ -70,7 +70,7 @@ const MusicPlayerBar = () => {
               {isPlaying ? <FaCirclePause /> : <FaCirclePlay />}
             </button>
             <button
-              className="text-2xl text-white"
+              className="text-2xl text-white outline-0"
               onClick={() => {
                 const nextTrack = tracks[(currentIndex + 1) % tracks.length];
                 console.log("TRACKS:", tracks);
@@ -85,7 +85,7 @@ const MusicPlayerBar = () => {
             </button>
           </div>
           <div className="songProgress flex items-center justify-between gap-4">
-            <span className="text-white font-semibold">
+            <span className="text-white font-semibold min-w-12 text-center">
               {formatTime(duration)}
             </span>
             <div className="progressContainer min-w-96">
@@ -97,7 +97,7 @@ const MusicPlayerBar = () => {
                 onChange={(e) => {
                   seekAudio(Number(e.target.value));
                 }}
-                className="music-progress"
+                className="music-progress outline-0"
                 style={{
                   background: `linear-gradient(
         to right,
@@ -110,7 +110,7 @@ const MusicPlayerBar = () => {
               />
             </div>
 
-            <span className="text-white font-semibold">
+            <span className="text-white font-semibold min-w-12 text-center">
               {formatTime(currentTime)}
             </span>
           </div>
@@ -118,12 +118,13 @@ const MusicPlayerBar = () => {
       </div>
       {/* Volume Div */}
       <div className="volumeControl flex items-center gap-3">
+        <img src={volume > 1 ? "./volume_up.svg" : "./volume_off.svg"} />
         <input
           type="range"
           min={0}
           max="100"
           value={volume}
-          className="volume-progress"
+          className="volume-progress outline-0"
           style={{
             background: `linear-gradient(
     to right,
@@ -137,7 +138,7 @@ const MusicPlayerBar = () => {
             changeVolume(e.target.value);
           }}
         />
-        <span className="font-semibold text-white min-w-5 p-2 text-center">
+        <span className="font-semibold text-white min-w-12 p-2 text-center ">
           {volume}
         </span>
       </div>
