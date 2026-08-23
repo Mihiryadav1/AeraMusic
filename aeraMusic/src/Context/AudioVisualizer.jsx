@@ -24,7 +24,7 @@ const AudioVisualizer = () => {
   }, []);
 
   return (
-    <div className="flex items-end gap-1 h-1/2 overflow-hidden rounded-2xl w-full">
+    <div className="flex items-end gap-1 h-1/2 overflow-hidden rounded-2xl sm:w-full">
       {frequencyData.map((value, index) => (
         <VisualizerBars key={index} frequencyData={value} />
       ))}
